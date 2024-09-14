@@ -1,0 +1,224 @@
+body {
+  background-color: rgba(0, 132, 55, 0.2);
+  color: rgb(33, 37, 41);
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  margin: 2%;
+  width: 96%;
+  box-sizing: border-box;
+}
+
+#container {
+  width: fit-content;
+  margin: 0 auto;
+  padding-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.26) 0px 5px 10px 0px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255);
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2%;
+}
+
+.calculator {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.segments {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.calculations {
+  padding-bottom: 20px;
+}
+
+h1 {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  font-size: 26px;
+}
+
+h2 {
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(33, 37, 41);
+  text-align: center;
+}
+
+.input {
+  width: 275px;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  height: 50px;
+  box-sizing: border-box;
+  flex: 1;
+  background-color: transparent;
+  border: 2px solid #a3a3a3;
+  border-radius: 25px;
+  outline: none;
+  padding-left: 5px;
+  transition: border-color 0.4s, background-color 0.4s, color 0.4s;
+}
+
+select {
+  width: 275px;
+  height: 50px;
+  font-size: 20px;
+  color: #a3a3a3;
+  border: 2px solid #a3a3a3;
+  background-color: transparent;
+  border-radius: 25px;
+  outline: none;
+  padding-left: 5px;
+  transition: border-color 0.4s, background-color 0.4s, color 0.4s;
+}
+
+input:hover,
+select:hover {
+  color: rgb(0, 132, 55) !important;
+  border-color: rgb(0, 132, 55) !important;
+  background-color: rgba(0, 132, 55, 0.15);
+  box-shadow: 0px 0px 15px 2px #cccccc;
+}
+
+input:hover::placeholder,
+select:hover::placeholder {
+  color: rgb(0, 132, 55);
+}
+
+input:hover.toCalculate,
+input:focus.toCalculate,
+input.toCalculate {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  color: rgb(33, 37, 41) !important;
+  text-align: center;
+}
+
+input:focus,
+select:focus {
+  color: rgb(0, 0, 0);
+  border-color: rgb(0, 0, 0);
+}
+
+input.visited,
+select.visited {
+  color: rgb(0, 0, 0);
+  border-color: rgb(0, 0, 0);
+}
+
+.display {
+  width: 250px;
+  height: 50px;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+#biggerDisplay {
+  height: 100px;
+}
+
+.results {
+  font-size: 22px;
+}
+
+.resultDisplay {
+  width: 250px;
+  height: 30px;
+  font-size: 22px;
+  margin-bottom: 20px;
+  text-align: center;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.unit {
+  font-size: 22px;
+  padding-left: 3px;
+}
+
+#grainMass,
+#grainDensity,
+#germinationStrength,
+#grainPurity,
+#area,
+#rowWidth,
+#plantSpace,
+#seedingUnitIndex,
+#seedingUnitMass,
+#sowingPlantRate {
+  font-size: 22px;
+}
+
+#sowingRate,
+#grainDemand,
+#sowingPlantRateHectare,
+#sowingSeedRateHectare,
+#finalPlantSpace,
+#sowingSeedRateMeter,
+#seedingUnit,
+#seedsMass {
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(0, 132, 55);
+  text-align: center;
+  align-items: center;
+}
+
+#sowingRate.tooBig,
+#grainDemand.tooBig,
+#sowingRate.incomplete,
+#sowingPlantRateHectare.incomplete,
+#sowingSeedRateHectare.incomplete,
+#sowingSeedRateHectare.tooBig {
+  font-size: 26px;
+  color: red;
+}
+
+.toCalculate {
+  border-color: transparent;
+}
+
+::placeholder {
+  font-size: 20px;
+  color: #a3a3a3;
+}
+
+#reset {
+  height: 50px;
+  border-radius: 25px;
+  font-size: 22px;
+  background-color: transparent;
+  border: 2px solid rgb(0, 132, 55);
+  color: rgb(0, 132, 55);
+  margin-top: 10px;
+  transition: background-color 0.5s;
+}
+
+#reset:hover {
+  background-color: rgba(0, 132, 55, 0.4);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

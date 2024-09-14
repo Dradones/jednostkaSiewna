@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title>Jednostka siewna</title>
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+        <script src="jednostkaSiewnaScript.js" defer></script>
+    </head>
+    <body>
+    <main>
+    <div id="headerArea"></div>
+    <div id="container">
+        <header>
+            <div id="header">
+                <h1>Ile jednosek siewnych (js.) na hektar?</h1>
+                <button id="reset" onclick="reset()">Resetuj</button>
+            </div>
+        </header>
+        <div class="calculator">
+            <article>
+                <div class="segments">
+                    <header>
+                        <h2>OBSADA</h2>
+                    </header>
+
+                    <section>
+                        <div class="calculations">
+                            <div class="input">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="rowWidth" oninput="calculate()" placeholder="Szerokość międzyrzędzi" onfocus="this.placeholder='Szerokość międzyrzędzi'" onblur="this.placeholder='Szerokość międzyrzędzi'">
+                                <div class="unit">cm</div>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <section>
+                        <div class="display">
+                            Wstępny odstęp między nasionami lub ich obsada:
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="calculations">
+                            <div class="input">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="plantSpace" oninput="calculate()" placeholder="Odstęp między nasionami" onfocus="this.placeholder='Odstęp między nasionami'" onblur="this.placeholder='Odstęp między nasionami'">
+                                <div class="unit">cm</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="calculations">
+                            <div class="input">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="sowingPlantRate" oninput="calculate()" placeholder="Obsada nasion" onfocus="this.placeholder='Obsada nasion'" onblur="this.placeholder='Obsada nasion'">
+                                <div class="unit">szt./ha</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="display">
+                            <div>
+                                Ostateczny odstęp między nasionami:
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="display">
+                            <div id="finalPlantSpace" class="unit"></div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+            
+            <article>
+                <div class="segments">
+                    <header>
+                        <h2>POPRAWKI</h2>
+                    </header>
+
+                    <section>
+                        <div class="calculations">
+                            <div class="input">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="germinationStrength" oninput="calculate()" placeholder="Siła kiełkowania" onfocus="this.placeholder='Siła kiełkowania'" onblur="this.placeholder='Siła kiełkowania'">
+                                <div class="unit">%</div>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <section>
+                        <div class="calculations">
+                            <div>
+                                <select id="germinationCondition" class="selectBox" oninput="calculate()">
+                                    <option value="" selected hidden>Warunki wschodów</option>
+                                    <option value="1.00">idealne</option>
+                                    <option value="0.98">gleba nieco zbyt zimna</option>
+                                    <option value="0.95">gleba zimna</option>
+                                    <option value="0.97">lekkie ryzyko skorupy</option>
+                                    <option value="0.85">duże ryzyko skorupy</option>
+                                    <option value="1.00">NIE DOTYCZY</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <section>
+                        <div class="calculations">
+                            <div>
+                                <select id="birdsRisk" class="selectBox" oninput="calculate()">
+                                    <option value="" selected hidden>Ryzyko ptaków</option>
+                                    <option value="1.00">brak ryzyka ptaków</option>
+                                    <option value="0.98">małe ryzyko ptaków</option>
+                                    <option value="0.97">średnie ryzyko ptaków</option>
+                                    <option value="0.95">duże ryzyko ptaków</option>
+                                    <option value="1.00">NIE DOTYCZY</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+    
+                    <section>
+                        <div class="calculations">
+                            <div>
+                                <select id="flyRisk" class="selectBox" oninput="calculate()">
+                                    <option value="" selected hidden>Ryzyko ploniarki</option>
+                                    <option value="1.00">brak ryzyka ploniarki</option>
+                                    <option value="0.99">ryzyko ploniarki - siew przyspieszony</option>
+                                    <option value="0.95">ryzyko ploniarki - siew w terminie</option>
+                                    <option value="0.92">ryzyko ploniarki - siew w opóźniony</option>
+                                    <option value="1.00">NIE DOTYCZY</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="resultDisplay">
+                            <div>
+                                Obsada nasion:
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <section>
+                        <div class="display" id="biggerDisplay">
+                            <div id="sowingSeedRateHectare" class="unit"></div>
+                            <div id="sowingSeedRateMeter" class="unit"></div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+
+            <article>
+                <div class="segments">
+                    <header>
+                        <h2>WYNIK</h2>
+                    </header>
+
+                    <section>
+                        <div class="calculations">
+                            <div class="input">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="seedingUnitIndex" oninput="calculate()" placeholder="Liczba nasion w js." onfocus="this.placeholder='Liczba nasion w js.'" onblur="this.placeholder='Liczba nasion w js.'">
+                                <div class="unit">szt.</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="calculations">
+                            <div class="input">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="seedingUnitMass" oninput="calculate()" placeholder="Masa js." onfocus="this.placeholder='Masa js.'" onblur="this.placeholder='Masa js.'">
+                                <div class="unit">kg</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="display">
+                            <div>
+                                Liczba jednostek siewnych na 1 ha:
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="display">
+                            <div id="seedingUnit" class="unit"></div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="resultDisplay">
+                            <div>
+                                Masa nasion na ha:
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <div class="display">
+                            <div id="seedsMass" class="unit"></div>
+                        </div>
+                    </section>
+                </div>
+            </article>
+        </div>
+    </div>
+    </main>
+    </body>
+</html>
