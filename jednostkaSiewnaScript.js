@@ -55,19 +55,26 @@ function textToNumber(variable) {
     variable = separator(variable);
     return variable;
 }
-
 function isPercent(variable) {
     return variable > 100 ? "" : variable;
 }
 
 function onlyInteger(variable) {
+    if(variable.indexOf('0') === 0){
+        return variable.slice(1);
+    }
+
     return variable.includes(".") ? variable.replace(".", "") : variable;
 }
 
 function oneDot(variable) {
     const firstDotIndex = variable.indexOf('.');
 
-    if (firstDotIndex === -1) {
+    if (firstDotIndex === -1){
+        return variable;
+    }
+    if(firstDotIndex === 0){
+        variable = "0.";
         return variable;
     }
     const beforeDot = variable.slice(0, firstDotIndex + 1);
