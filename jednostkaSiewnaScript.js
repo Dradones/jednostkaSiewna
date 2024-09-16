@@ -29,7 +29,7 @@ window.addEventListener('resize', adjustInputWidths);
 let timeoutID;
 function waiting() {
     timeoutID = setTimeout(function() {
-        var sowingSeedRateHectareElement = document.getElementById("sowingSeedRateHectare");
+        const sowingSeedRateHectareElement = document.getElementById("sowingSeedRateHectare");
         if (sowingSeedRateHectareElement.innerHTML === "") {
             sowingSeedRateHectareElement.classList.add("tooBig");
             sowingSeedRateHectareElement.innerHTML = "uzupełnij wartości";
@@ -42,7 +42,6 @@ function resetTimeout() {
 }
 window.addEventListener('input', resetTimeout);
 window.addEventListener('click', resetTimeout);
-//window.addEventListener('onload', waiting());
 
 function textToNumber(variable) {
     variable = variable.replace(/[^0-9.,]/g, '');
@@ -200,9 +199,9 @@ function calculate() {
     germinationStrengthElement.value = germinationStrength;
     germinationStrength = parseFloat(germinationStrength.replace(/\s+/g, '')) / 100;
 
-    let germinationCondition = textToNumber(germinationConditionElement.value);
-    let birdsRisk = textToNumber(birdsRiskElement.value);
-    let flyRisk = textToNumber(flyRiskElement.value);
+    const germinationCondition = textToNumber(germinationConditionElement.value);
+    const birdsRisk = textToNumber(birdsRiskElement.value);
+    const flyRisk = textToNumber(flyRiskElement.value);
 
     let sowingSeedRateHectare = (Number(sowingPlantRate) / Number(germinationStrength) / Number(germinationCondition) / Number(birdsRisk) / Number(flyRisk));
     sowingSeedRateHectare = Math.round(sowingSeedRateHectare);
