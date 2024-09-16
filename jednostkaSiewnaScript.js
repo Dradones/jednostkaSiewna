@@ -106,6 +106,17 @@ function separator(variable) {
     }
     return result + afterDot;
 }
+window.addEventListener('load', function(){
+    document.getElementById("finalPlantSpaceText").classList.add("none");
+    document.getElementById("sowingSeedRateText").classList.add("none");
+    document.getElementById("seedingUnitText").classList.add("none");
+    document.getElementById("seedsMassText").classList.add("none");
+
+    document.getElementById("finalPlantSpaceDisplay").classList.add("none");
+    document.getElementById("sowingSeedRateDisplay").classList.add("none");
+    document.getElementById("seedingUnitDisplay").classList.add("none");
+    document.getElementById("seedsMassDisplay").classList.add("none");
+})
 
 function calculate() {
     const rowWidthElement = document.getElementById("rowWidth");
@@ -212,6 +223,12 @@ function calculate() {
     if (isNaN(sowingSeedRateHectare) || sowingSeedRateHectare === Infinity || sowingSeedRateHectare === 0) {
         sowingSeedRateHectareElement.innerHTML = "";
     } else {
+        document.getElementById("finalPlantSpaceText").classList.remove("none");
+        document.getElementById("finalPlantSpaceDisplay").classList.remove("none");
+
+        document.getElementById("sowingSeedRateText").classList.remove("none");
+        document.getElementById("sowingSeedRateDisplay").classList.remove("none");
+
         sowingSeedRateHectareElement.classList.remove("tooBig");
         sowingSeedRateHectare = separator(sowingSeedRateHectare.toString());
         sowingSeedRateHectareElement.innerHTML = sowingSeedRateHectare + " szt./ha";
@@ -233,6 +250,8 @@ function calculate() {
     if (isNaN(seedingUnit) || seedingUnit === Infinity) {
         seedingUnitElement.innerHTML = "";
     } else {
+        document.getElementById("seedingUnitText").classList.remove("none");
+        document.getElementById("seedingUnitDisplay").classList.remove("none");
         seedingUnitElement.innerHTML = seedingUnit + " js.";
     }
 
@@ -247,9 +266,13 @@ function calculate() {
     if (seedsMass === 0 || isNaN(seedsMass)) {
         seedsMassElement.innerHTML = "";
     } else {
+        document.getElementById("seedsMassText").classList.remove("none");
+        document.getElementById("seedsMassDisplay").classList.remove("none");
         seedsMassElement.innerHTML = seedsMass + " kg";
     }
 }
+window.addEventListener('click', calculate);
+window.addEventListener('input', calculate);
 
 function reset() {
     const elements = ["rowWidth", "plantSpace", "sowingPlantRate", "germinationStrength", 
@@ -271,6 +294,15 @@ function reset() {
         if (outputElement) {
             outputElement.innerHTML = ""; 
             outputElement.classList.remove('visited', 'tooBig');
+        }
+    });
+
+    const noneElements = ["finalPlantSpaceText", "sowingSeedRateText", "seedingUnitText", "seedsMassText", "finalPlantSpaceDisplay", "sowingSeedRateDisplay", "seedingUnitDisplay", "seedsMassDisplay"];
+
+    noneElements.forEach(id => {
+        const noneElement = document.getElementById(id);
+        if (noneElement) {
+            noneElement.classList.add('none');
         }
     });
 }

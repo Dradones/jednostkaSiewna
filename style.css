@@ -132,7 +132,18 @@ select.visited {
   flex: 1;
 }
 
-#biggerDisplay {
+#finalPlantSpaceText.none,
+#sowingSeedRateText.none,
+#seedingUnitText.none,
+#seedsMassText.none,
+#finalPlantSpaceDisplay.none,
+#sowingSeedRateDisplay.none,
+#seedingUnitDisplay.none,
+#seedsMassDisplay.none {
+  display: none;
+}
+
+#sowingSeedRateDisplay {
   height: 100px;
 }
 

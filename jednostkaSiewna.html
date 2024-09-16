@@ -36,7 +36,7 @@
                     <section>
                         <div class="calculations">
                             <div class="input">
-                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="rowWidth" oninput="calculate()" placeholder="Szerokość międzyrzędzi" onfocus="this.placeholder='Szerokość międzyrzędzi'" onblur="this.placeholder='Szerokość międzyrzędzi'">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="rowWidth" placeholder="Szerokość międzyrzędzi">
                                 <div class="unit">cm</div>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                     <section>
                         <div class="calculations">
                             <div class="input">
-                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="plantSpace" oninput="calculate()" placeholder="Odstęp między nasionami" onfocus="this.placeholder='Odstęp między nasionami'" onblur="this.placeholder='Odstęp między nasionami'">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="plantSpace" placeholder="Odstęp między nasionami">
                                 <div class="unit">cm</div>
                             </div>
                         </div>
@@ -60,14 +60,14 @@
                     <section>
                         <div class="calculations">
                             <div class="input">
-                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="sowingPlantRate" oninput="calculate()" placeholder="Obsada nasion" onfocus="this.placeholder='Obsada nasion'" onblur="this.placeholder='Obsada nasion'">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="sowingPlantRate" placeholder="Obsada nasion">
                                 <div class="unit">szt./ha</div>
                             </div>
                         </div>
                     </section>
 
                     <section>
-                        <div class="display">
+                        <div id="finalPlantSpaceText" class="display">
                             <div>
                                 Ostateczny odstęp między nasionami:
                             </div>
@@ -75,7 +75,7 @@
                     </section>
 
                     <section>
-                        <div class="display">
+                        <div id="finalPlantSpaceDisplay" class="display">
                             <div id="finalPlantSpace" class="unit"></div>
                         </div>
                     </section>
@@ -91,7 +91,7 @@
                     <section>
                         <div class="calculations">
                             <div class="input">
-                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="germinationStrength" oninput="calculate()" placeholder="Siła kiełkowania" onfocus="this.placeholder='Siła kiełkowania'" onblur="this.placeholder='Siła kiełkowania'">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="germinationStrength" placeholder="Siła kiełkowania">
                                 <div class="unit">%</div>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                     <section>
                         <div class="calculations">
                             <div>
-                                <select id="germinationCondition" class="selectBox" oninput="calculate()">
+                                <select id="germinationCondition" class="selectBox">
                                     <option value="" selected hidden>Warunki wschodów</option>
                                     <option value="1.00">idealne</option>
                                     <option value="0.98">gleba nieco zbyt zimna</option>
@@ -116,7 +116,7 @@
                     <section>
                         <div class="calculations">
                             <div>
-                                <select id="birdsRisk" class="selectBox" oninput="calculate()">
+                                <select id="birdsRisk" class="selectBox">
                                     <option value="" selected hidden>Ryzyko ptaków</option>
                                     <option value="1.00">brak ryzyka ptaków</option>
                                     <option value="0.98">małe ryzyko ptaków</option>
@@ -131,7 +131,7 @@
                     <section>
                         <div class="calculations">
                             <div>
-                                <select id="flyRisk" class="selectBox" oninput="calculate()">
+                                <select id="flyRisk" class="selectBox">
                                     <option value="" selected hidden>Ryzyko ploniarki</option>
                                     <option value="1.00">brak ryzyka ploniarki</option>
                                     <option value="0.99">ryzyko ploniarki - siew przyspieszony</option>
@@ -144,7 +144,7 @@
                     </section>
 
                     <section>
-                        <div class="resultDisplay">
+                        <div id="sowingSeedRateText" class="resultDisplay">
                             <div>
                                 Obsada nasion:
                             </div>
@@ -152,7 +152,7 @@
                     </section>
                     
                     <section>
-                        <div class="display" id="biggerDisplay">
+                        <div class="display" id="sowingSeedRateDisplay">
                             <div id="sowingSeedRateHectare" class="unit"></div>
                             <div id="sowingSeedRateMeter" class="unit"></div>
                         </div>
@@ -169,7 +169,7 @@
                     <section>
                         <div class="calculations">
                             <div class="input">
-                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="seedingUnitIndex" oninput="calculate()" placeholder="Liczba nasion w js." onfocus="this.placeholder='Liczba nasion w js.'" onblur="this.placeholder='Liczba nasion w js.'">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="seedingUnitIndex" placeholder="Liczba nasion w js.">
                                 <div class="unit">szt.</div>
                             </div>
                         </div>
@@ -178,14 +178,14 @@
                     <section>
                         <div class="calculations">
                             <div class="input">
-                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="seedingUnitMass" oninput="calculate()" placeholder="Masa js." onfocus="this.placeholder='Masa js.'" onblur="this.placeholder='Masa js.'">
+                                <input type="text" inputmode="numeric" pattern="[0-9]*" id="seedingUnitMass" placeholder="Masa js.">
                                 <div class="unit">kg</div>
                             </div>
                         </div>
                     </section>
 
                     <section>
-                        <div class="display">
+                        <div id="seedingUnitText" class="display">
                             <div>
                                 Liczba jednostek siewnych na 1 ha:
                             </div>
@@ -193,13 +193,13 @@
                     </section>
 
                     <section>
-                        <div class="display">
+                        <div id="seedingUnitDisplay" class="display">
                             <div id="seedingUnit" class="unit"></div>
                         </div>
                     </section>
 
                     <section>
-                        <div class="resultDisplay">
+                        <div id="seedsMassText" class="resultDisplay">
                             <div>
                                 Masa nasion na ha:
                             </div>
@@ -207,7 +207,7 @@
                     </section>
 
                     <section>
-                        <div class="display">
+                        <div id="seedsMassDisplay" class="display">
                             <div id="seedsMass" class="unit"></div>
                         </div>
                     </section>
