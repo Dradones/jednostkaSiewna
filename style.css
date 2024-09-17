@@ -63,14 +63,16 @@ h2 {
 }
 
 input {
-  height: 50px;
-  box-sizing: border-box;
-  flex: 1;
+  height: 46px;
+  padding-left: 5px;
+
+  flex-grow: 1;
+  width: 0;
+
   background-color: transparent;
   border: 2px solid #a3a3a3;
   border-radius: 25px;
   outline: none;
-  padding-left: 5px;
   transition: border-color 0.4s, background-color 0.4s, color 0.4s;
 }
 
@@ -198,10 +200,18 @@ select.visited {
 #grainDemand.tooBig,
 #sowingRate.incomplete,
 #sowingPlantRateHectare.incomplete,
-#sowingSeedRateHectare.incomplete,
+#sowingSeedRateHectare.incomplete {
+  font-size: 26px;
+  color: red;
+}
+
 #sowingSeedRateHectare.tooBig {
   font-size: 26px;
   color: red;
+
+  padding-top: 30px;
+  align-items: center;
+  height: 100%;
 }
 
 .toCalculate {
@@ -215,6 +225,7 @@ select.visited {
 
 #reset {
   height: 50px;
+  max-width: 90px;
   border-radius: 25px;
   font-size: 22px;
   background-color: transparent;

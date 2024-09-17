@@ -9,34 +9,20 @@ visitedElements.forEach(input => {
     });
 });
 
-function adjustInputWidths() {
-    const containers = document.querySelectorAll('.input');
-    containers.forEach(container => {
-        const input = container.querySelector('input');
-        const unit = container.querySelector('.unit');
-
-        const fontSize = parseFloat(window.getComputedStyle(input, null).getPropertyValue('font-size'));
-        const containerWidth = container.offsetWidth;
-        const unitWidth = unit.offsetWidth;
-        const inputWidth = containerWidth - unitWidth - (2 * fontSize);
-
-        input.style.width = `${inputWidth}px`;
-    });
-}
-window.addEventListener('load', adjustInputWidths);
-window.addEventListener('resize', adjustInputWidths);
-
 let timeoutID;
 function waiting() {
     timeoutID = setTimeout(function() {
         const sowingSeedRateHectareElement = document.getElementById("sowingSeedRateHectare");
         if (sowingSeedRateHectareElement.innerHTML === "") {
             sowingSeedRateHectareElement.classList.add("tooBig");
+            document.getElementById("sowingSeedRateDisplay").classList.remove("none");
+            
             sowingSeedRateHectareElement.innerHTML = "uzupełnij wartości";
         }
-    }, 5000);
+    }, 3000);
 }
 function resetTimeout() {
+    document.getElementById("sowingSeedRateDisplay").classList.add("none");
     clearTimeout(timeoutID);
     waiting();
 }
@@ -54,6 +40,7 @@ function textToNumber(variable) {
     variable = separator(variable);
     return variable;
 }
+
 function isPercent(variable) {
     return variable > 100 ? "" : variable;
 }
@@ -106,17 +93,6 @@ function separator(variable) {
     }
     return result + afterDot;
 }
-window.addEventListener('load', function(){
-    document.getElementById("finalPlantSpaceText").classList.add("none");
-    document.getElementById("sowingSeedRateText").classList.add("none");
-    document.getElementById("seedingUnitText").classList.add("none");
-    document.getElementById("seedsMassText").classList.add("none");
-
-    document.getElementById("finalPlantSpaceDisplay").classList.add("none");
-    document.getElementById("sowingSeedRateDisplay").classList.add("none");
-    document.getElementById("seedingUnitDisplay").classList.add("none");
-    document.getElementById("seedsMassDisplay").classList.add("none");
-})
 
 function calculate() {
     const rowWidthElement = document.getElementById("rowWidth");
@@ -274,19 +250,20 @@ function calculate() {
 window.addEventListener('click', calculate);
 window.addEventListener('input', calculate);
 
-function reset() {
-    const elements = ["rowWidth", "plantSpace", "sowingPlantRate", "germinationStrength", 
-        "germinationCondition", "birdsRisk", "flyRisk", "seedingUnitIndex", 
-        "seedingUnitMass"];
+window.addEventListener('load', function(){
+    const elements = ["finalPlantSpaceText", "sowingSeedRateText", "seedingUnitText", "seedsMassText", "finalPlantSpaceDisplay", "sowingSeedRateDisplay", "seedingUnitDisplay", "seedsMassDisplay"];
 
     elements.forEach(id => {
-        const inputElement = document.getElementById(id);
-        if (inputElement) {
-            inputElement.value = "";  
-            inputElement.classList.remove('visited', 'toCalculate');
+        const element = document.getElementById(id);
+        if (element) {
+            element.value = "";  
+            element.classList.add('none');
         }
     });
+});
 
+document.getElementById('reset').addEventListener('click', function() {
+    
     const outputElements = ["sowingSeedRateHectare", "finalPlantSpace", "seedingUnit", "sowingSeedRateMeter", "seedsMass"];
 
     outputElements.forEach(id => {
@@ -294,6 +271,18 @@ function reset() {
         if (outputElement) {
             outputElement.innerHTML = ""; 
             outputElement.classList.remove('visited', 'tooBig');
+        }
+    });
+
+    const elements = ["rowWidth", "plantSpace", "sowingPlantRate", "germinationStrength", 
+        "germinationCondition", "birdsRisk", "flyRisk", "seedingUnitIndex", 
+        "seedingUnitMass"];
+
+    elements.forEach(id => {
+        const inputElement = document.getElementById(id);
+        if (inputElement) {
+            inputElement.value = "";
+            inputElement.classList.remove('visited', 'toCalculate');
         }
     });
 
@@ -305,4 +294,4 @@ function reset() {
             noneElement.classList.add('none');
         }
     });
-}
+});
